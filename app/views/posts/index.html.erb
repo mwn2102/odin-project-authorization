@@ -1,0 +1,19 @@
+<h1>These are all your posts.</h1>
+
+<% @posts.each do |post| %>
+    <p>Content:  <%= post.content %> </p>
+    <% if logged_in? %>
+   <p>User ID: <%= post.user_id %> </p>
+   <%end%>
+   <p>--------</p>
+   
+<%end%>
+
+<p>*****************</p>
+
+<% if logged_in? %>
+    <%= link_to "Sign out", session_path(current_user), method: :delete %>
+    <%= link_to "New Post", new_post_path %>
+<%else%>
+    <%= link_to "Sign in to see author", new_session_path %>
+<%end%>
